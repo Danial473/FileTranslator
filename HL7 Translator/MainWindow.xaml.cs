@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using Microsoft.Win32;
+using HL7_Translator.Properties;
 
 namespace HL7_Translator
 {
@@ -19,12 +20,9 @@ namespace HL7_Translator
 
         private void TranslateButton_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Text files (*.txt)|*.txt|All files (*.*)|*.*";
+            OpenFileDialog openFileDialog = new OpenFileDialog(); 
 
-            string defaultPath = string.Empty;
-            if (ConfigurationManager.AppSettings.AllKeys.Contains("DefaultPath"))
-                defaultPath = ConfigurationManager.AppSettings["DefaultPath"];
+            var defaultPath = Settings.Default["DefaultPath"].ToString();
 
             if (!string.IsNullOrEmpty(defaultPath))
                 openFileDialog.InitialDirectory = defaultPath;

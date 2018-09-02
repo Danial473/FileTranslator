@@ -1,39 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HL7_Translator.Properties;
 
 namespace HL7_Translator
 {
     public class HL7FileProcessor
     {
         public List<string> AntigensList = new List<string> { "IGG", "IGA", "IGM" };
+        public List<AntigenValue> AntigenValueList = new List<AntigenValue>();
 
         public const string ArrayName = "GAM";
         public const int controlCount = 3;
-
-        public Dictionary<string, string> AntigenValueList = new Dictionary<string, string>();
 
 
         public void ProcessContent(string content, string date, string batchNumber)
         {
             // This is the string applications uses to split the text to sections
             string carveString = "P|"; // default value if config was empty
-            if (ConfigurationManager.AppSettings.AllKeys.Contains("CarveString"))
-                carveString = ConfigurationManager.AppSettings["CarveString"];
+            if (!string.IsNullOrWhiteSpace(Settings.Default["FileSplitterString"].ToString()))
+                carveString = Convert.ToString(Settings.Default["FileSplitterString"]);
 
-            var splittedContent = content.Split(carveString.ToCharArray());
+            var splittedContent = content.Split(new[] { carveString }, StringSplitOptions.None);
 
-            for (int i = 0; i < splittedContent.Length; i++)
+            for (int i = 1; i < splittedContent.Length; i++)
             {
-                var splittedRow = content.Split(new string[] { "\n\r" }, StringSplitOptions.None);
+                var splittedRow = splittedContent[i].Split(new string[] { "\r\n" }, StringSplitOptions.None);
                 foreach (string antigen in AntigensList)
                 {
                     var value = GetRowValue(splittedRow, antigen);
-                    AntigenValueList.Add(antigen, value);
+                    AntigenValueList.Add(new AntigenValue { AntigenName = antigen, Value = value });
                 }
             }
 
@@ -58,32 +57,42 @@ namespace HL7_Translator
         private void CreateFile(string date, string batchNumber)
         {
             // get antigen names for the ones we have values for
-            var antigens = AntigenValueList.Select(a => a.Key).Distinct();
+            var antigens = AntigenValueList.Select(a => a.AntigenName).Distinct();
 
             foreach (var antigen in antigens)
             {
                 var fileName = $"{ArrayName}{antigen}.{date}.{batchNumber}";
-                var fileContent = new StringBuilder($"Experiment File Name:,{fileName}.xpt\n\r\n\r");
+                var fileContent = new StringBuilder($"Experiment File Name:,{fileName}.xpt\r\n\r\n");
 
                 // Adding control values
                 for (int i = 0; i < controlCount; i++)
                 {
-                    fileContent.Append($"CTL{i},{AntigenValueList[antigen][i]}\n\r");
+                    fileContent.AppendLine($"CTL{i},{AntigenValueList[i].Value}");
                 }
 
-                fileContent.Append("\n\rBLK,?????\n\r");
+                fileContent.AppendLine();
+                fileContent.AppendLine("BLK,?????");
 
                 // Adding specimen values
-                for (int i = controlCount; i < AntigenValueList[antigen].Length; i++)
+                var count = AntigenValueList.Count(a => a.AntigenName == antigen);
+                for (int i = controlCount; i < count; i++)
                 {
-                    fileContent.Append($"SPL{i},{AntigenValueList[antigen][i]}\n\r");
+                    fileContent.AppendLine($"SPL{i},{AntigenValueList[i].Value}");
                 }
 
                 string destinationPath = string.Empty;
-                if (ConfigurationManager.AppSettings.AllKeys.Contains("DefaultPath"))
-                    destinationPath = ConfigurationManager.AppSettings["DefaultPath"];
+                if (!string.IsNullOrEmpty(Settings.Default["FileDestinationDefaultPath"].ToString()))
+                    destinationPath = Settings.Default["FileDestinationDefaultPath"].ToString();
+                else
+                {
+                    var dialog = new System.Windows.Forms.FolderBrowserDialog();
+                    if (Convert.ToBoolean(dialog.ShowDialog()))
+                    {
+                        destinationPath = dialog.SelectedPath;
+                    }
+                }
 
-                using (var tw = new StreamWriter($"{ destinationPath }/{ fileName }.txt"))
+                using (var tw = new StreamWriter($"{ destinationPath }{ fileName }.txt"))
                 {
                     tw.Write(fileContent.ToString());
                 }

@@ -4,6 +4,5 @@
              xmlns:local="clr-namespace:HL7_Translator"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
     </Application.Resources>
 </Application>
