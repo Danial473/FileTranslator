@@ -25,18 +25,6 @@ namespace HL7_Translator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
-        public string DefaultPath {
-            get {
-                return ((string)(this["DefaultPath"]));
-            }
-            set {
-                this["DefaultPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("H|\\^")]
         public string FileSplitterString {
             get {
@@ -49,13 +37,25 @@ namespace HL7_Translator.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\dparsa\\Downloads")]
         public string FileDestinationDefaultPath {
             get {
                 return ((string)(this["FileDestinationDefaultPath"]));
             }
             set {
                 this["FileDestinationDefaultPath"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\dparsa\\Downloads")]
+        public string FileSourceDefaultPath {
+            get {
+                return ((string)(this["FileSourceDefaultPath"]));
+            }
+            set {
+                this["FileSourceDefaultPath"] = value;
             }
         }
     }

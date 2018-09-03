@@ -12,3 +12,8 @@ C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.c
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.exe
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.pdb
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.csprojResolveAssemblyReference.cache
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HomePage.g.cs
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\SettingsPage.g.cs
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator_MarkupCompile.lref
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HomePage.baml
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\SettingsPage.baml

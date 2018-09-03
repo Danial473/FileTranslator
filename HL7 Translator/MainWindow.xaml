@@ -4,16 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="HL7 Translator" Height="350" Width="525">
-    <Grid>
-        <Button Name="TranslateButton" Content="Translate HL7" HorizontalAlignment="Left" Margin="130,183,0,0" VerticalAlignment="Top" Width="250" Height="55" Click="TranslateButton_Click"/>
-        <TextBox Name="BatchDateTextBox" HorizontalAlignment="Left" Height="25" Margin="247,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
-        <TextBox Name="BatchNumberTextBox" Text="1" HorizontalAlignment="Left" Height="25" Margin="247,119,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
-        <Label Content="Batch Date" HorizontalAlignment="Left" Margin="130,76,0,0" VerticalAlignment="Top"/>
-        <Label Content="Batch Number" HorizontalAlignment="Left" Margin="130,118,0,0" VerticalAlignment="Top"/>
-        <Menu DockPanel.Dock="Top" Margin="0,0,0,296">
+        Title="HL7 Translator" Height="500" Width="600">
+    <Grid Margin="0,0,0,0">
+       
+        <Menu DockPanel.Dock="Top" Margin="0,0,0,439">
             <MenuItem Header="Settings" Click="MenuItem_Click">
             </MenuItem>
         </Menu>
+        <Frame Content="" Name="MainFrame" Margin="0,30,0,0" FontSize="14" NavigationUIVisibility="Hidden"/>
     </Grid>
 </Window>

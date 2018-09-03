@@ -2,14 +2,14 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="HL7_Translator.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="DefaultPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\</Value>
-    </Setting>
     <Setting Name="FileSplitterString" Type="System.String" Scope="User">
       <Value Profile="(Default)">H|\^</Value>
     </Setting>
     <Setting Name="FileDestinationDefaultPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\</Value>
+      <Value Profile="(Default)">C:\Users\dparsa\Downloads</Value>
+    </Setting>
+    <Setting Name="FileSourceDefaultPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\dparsa\Downloads</Value>
     </Setting>
   </Settings>
 </SettingsFile>

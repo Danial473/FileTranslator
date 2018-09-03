@@ -1,0 +1,17 @@
+﻿<Page x:Class="HL7_Translator.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HL7_Translator"
+      mc:Ignorable="d"  Height="330" Width="550" VerticalAlignment="Bottom"
+      Title="Home" FontSize="14">
+
+    <Grid>
+        <Button Name="TranslateButton" Content="Choose HL7 File For Translation" HorizontalAlignment="Left" Margin="166,131,0,0" VerticalAlignment="Top" Width="211" Height="53" Click="TranslateButton_Click"/>
+        <TextBox Name="BatchDateTextBox" HorizontalAlignment="Left" Height="25" Margin="260,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
+        <TextBox Name="BatchNumberTextBox" Text="1" HorizontalAlignment="Left" Height="25" Margin="260,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
+        <Label Content="Batch Date" HorizontalAlignment="Left" Margin="143,22,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Batch Number" HorizontalAlignment="Left" Margin="143,64,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+    </Grid>
+</Page>
