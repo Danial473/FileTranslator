@@ -18,10 +18,17 @@ namespace HL7_Translator
 
         private void TranslateButton_Click(object sender, RoutedEventArgs e)
         {
-            if(string.IsNullOrEmpty(BatchDateTextBox.Text))
+            if (string.IsNullOrEmpty(BatchDatePicker.Text))
             {
-                System.Windows.MessageBox.Show("Please enter batch date first", "", MessageBoxButton.OK);
-                BatchDateTextBox.Focus();
+                System.Windows.MessageBox.Show("Please enter batch date", "", MessageBoxButton.OK);
+                BatchDatePicker.Focus();
+                return;
+            }
+
+            if(BatchNumberComboBox.SelectedItem == null)
+            {
+                System.Windows.MessageBox.Show("Please choose batch number", "", MessageBoxButton.OK);
+                BatchNumberComboBox.Focus();
                 return;
             }
 
@@ -36,8 +43,11 @@ namespace HL7_Translator
             {
                 var HL7Content = File.ReadAllText(openFileDialog.FileName);
 
+                string month = BatchDatePicker.DisplayDate.Month < 10 ? $"0{BatchDatePicker.DisplayDate.Month}" : BatchDatePicker.DisplayDate.Month.ToString();
+                string day = BatchDatePicker.DisplayDate.Day < 10 ? $"0{BatchDatePicker.DisplayDate.Day}" : BatchDatePicker.DisplayDate.Day.ToString();
+
                 var fileProcessor = new HL7FileProcessor();
-                fileProcessor.ProcessContent(HL7Content, BatchDateTextBox.Text, BatchNumberTextBox.Text);
+                fileProcessor.ProcessContent(HL7Content, $"{month}{day}", BatchNumberComboBox.Text);
 
                 System.Windows.MessageBox.Show("Translation process completed", "", MessageBoxButton.OK);
 

@@ -9,9 +9,26 @@
 
     <Grid>
         <Button Name="TranslateButton" Content="Choose HL7 File For Translation" HorizontalAlignment="Left" Margin="166,131,0,0" VerticalAlignment="Top" Width="211" Height="53" Click="TranslateButton_Click"/>
-        <TextBox Name="BatchDateTextBox" HorizontalAlignment="Left" Height="25" Margin="260,23,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="133"/>
-        <TextBox Name="BatchNumberTextBox" Text="1" HorizontalAlignment="Left" Height="25" Margin="260,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133"/>
         <Label Content="Batch Date" HorizontalAlignment="Left" Margin="143,22,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Batch Number" HorizontalAlignment="Left" Margin="143,64,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <DatePicker Name="BatchDatePicker" HorizontalAlignment="Left" Margin="260,23,0,0" VerticalAlignment="Top" Width="133"/>
+        <ComboBox Name="BatchNumberComboBox" HorizontalAlignment="Left" Margin="260,68,0,0" VerticalAlignment="Top" Width="133">
+            <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="9" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="10" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="11" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="12" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="13" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="14" HorizontalAlignment="Left" Width="118"/>
+            <ComboBoxItem Content="15" HorizontalAlignment="Left" Width="118"/>
+        </ComboBox>
     </Grid>
 </Page>

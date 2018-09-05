@@ -1,19 +1,19 @@
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\bin\Debug\HL7 Translator.exe.config
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\bin\Debug\HL7 Translator.exe
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\bin\Debug\HL7 Translator.pdb
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.csprojResolveAssemblyReference.cache
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\MainWindow.baml
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HomePage.g.cs
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\MainWindow.g.cs
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\SettingsPage.g.cs
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\App.g.cs
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator_MarkupCompile.cache
-C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\MainWindow.baml
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator_MarkupCompile.lref
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HomePage.baml
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\SettingsPage.baml
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.g.resources
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7_Translator.Properties.Resources.resources
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.csproj.GenerateResource.Cache
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.csproj.CoreCompileInputs.cache
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.exe
 C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.pdb
-C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator.csprojResolveAssemblyReference.cache
-C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HomePage.g.cs
-C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\SettingsPage.g.cs
-C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HL7 Translator_MarkupCompile.lref
-C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\HomePage.baml
-C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Debug\SettingsPage.baml
