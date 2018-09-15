@@ -5,21 +5,22 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HL7_Translator"
       mc:Ignorable="d" 
-      Height="330" Width="550" VerticalAlignment="Bottom"
-      Title="Settings" FontSize="14">
+      Height="450" Width="550" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+      Title="Settings" FontSize="16">
 
     <Grid>
-        <Label Content="Destination File Path" HorizontalAlignment="Left" Margin="24,47,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Source File Path" HorizontalAlignment="Left" Margin="24,82,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox Name="DestinationTextBox" HorizontalAlignment="Left" Height="23" Margin="173,47,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="321"/>
-        <TextBox Name="SourceTextBox" HorizontalAlignment="Left" Height="23" Margin="173,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="321"/>
-        <Button Content="Save Settings" HorizontalAlignment="Left" Margin="308,191,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="Button_Click"/>
-        <Label Content="HL7 Splitter string" HorizontalAlignment="Left" Margin="24,117,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="SplitterTextBox" HorizontalAlignment="Left" Height="23" Margin="173,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="321"/>
-        <Button Name="DestinationChooserBtn" Content="..." HorizontalAlignment="Left" Margin="499,47,0,0" VerticalAlignment="Top" Width="26" Height="23" Click="DestinationChooserBtn_Click"/>
-        <Button Name="SourceChooserBtn" Content="..." HorizontalAlignment="Left" Margin="499,85,0,0" VerticalAlignment="Top" Width="26" Height="23" Click="SourceChooserBtn_Click"/>
-        <Button Name="SplitterChooserBtn" Content="..." HorizontalAlignment="Left" Margin="499,120,0,0" VerticalAlignment="Top" Width="26" Height="23" Click="SplitterChooserBtn_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="130,191,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="Button_Click_1"/>
+        <Label Content="Destination File Path" HorizontalAlignment="Left" Margin="10,159,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="HL7 File Location" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox Name="DestinationTextBox" HorizontalAlignment="Left" Height="23" Margin="176,162,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306"/>
+        <TextBox Name="SourceTextBox" HorizontalAlignment="Left" Height="23" Margin="176,117,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="306"/>
+        <Button Content="Save Settings" HorizontalAlignment="Left" Margin="301,257,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="Button_Click"/>
+        <Label Content="HL7 Splitter string" Visibility="Hidden" HorizontalAlignment="Left" Margin="24,117,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="SplitterTextBox" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="173,120,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="321"/>
+        <Button Name="DestinationChooserBtn" Content="..." HorizontalAlignment="Left" Margin="499,162,0,0" VerticalAlignment="Top" Width="26" Height="23" Click="DestinationChooserBtn_Click" RenderTransformOrigin="0.518,3.763"/>
+        <Button Name="SourceChooserBtn" Content="..." HorizontalAlignment="Left" Margin="499,117,0,0" VerticalAlignment="Top" Width="26" Height="23" Click="SourceChooserBtn_Click"/>
+        <Button Name="SplitterChooserBtn" Visibility="Hidden" Content="..." HorizontalAlignment="Left" Margin="499,120,0,0" VerticalAlignment="Top" Width="26" Height="23" Click="SplitterChooserBtn_Click"/>
+        <Button Content="Cancel" HorizontalAlignment="Left" Margin="123,257,0,0" VerticalAlignment="Top" Width="133" Height="35" Click="Button_Click_1"/>
+        <Label Content="SELECT YOUR FILE LOCATIONS" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="380"/>
 
     </Grid>
 </Page>

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using HL7_Translator.Properties;
 
 namespace HL7_Translator
@@ -12,6 +13,7 @@ namespace HL7_Translator
     {
         public List<string> AntigensList = new List<string> { "IGG", "IGA", "IGM" };
         public List<AntigenValue> AntigenValueList = new List<AntigenValue>();
+        public string FilePath { get; set; }
 
         public const string ArrayName = "GAM";
         public const int controlCount = 3;
@@ -56,7 +58,18 @@ namespace HL7_Translator
 
         private void CreateFile(string date, string batchNumber)
         {
-            // get antigen names for the ones we have values for
+            string destinationPath = GetDestinationPath();
+
+            // check file exists and if overwrite needed 
+            if (AntigensList.Any(a => File.Exists($"{ destinationPath }\\{ArrayName}{a}.{date}.{batchNumber}.txt")))
+            {
+                if (!Overwrite())
+                {
+                    return;
+                }
+            }
+
+            // get antigen names for the ones we have values for and write file content into text files
             foreach (var antigen in AntigensList)
             {
                 var antigenValues = AntigenValueList.Where(a => a.AntigenName == antigen).ToList();
@@ -81,24 +94,52 @@ namespace HL7_Translator
                         fileContent.AppendLine($"SPL{i - controlCount + 1},{antigenValues[i].Value}");
                     }
 
-                    string destinationPath = string.Empty;
-                    if (!string.IsNullOrEmpty(Settings.Default["FileDestinationDefaultPath"].ToString()))
-                        destinationPath = Settings.Default["FileDestinationDefaultPath"].ToString();
-                    else
-                    {
-                        var dialog = new System.Windows.Forms.FolderBrowserDialog();
-                        if (Convert.ToBoolean(dialog.ShowDialog()))
-                        {
-                            destinationPath = dialog.SelectedPath;
-                        }
-                    }
+                    string path = $"{ destinationPath }\\{ fileName }.txt";
 
-                    using (var tw = new StreamWriter($"{ destinationPath }\\{ fileName }.txt"))
+                    using (var tw = new StreamWriter(path))
                     {
                         tw.Write(fileContent.ToString());
                     }
                 }
             }
+
+            System.Windows.MessageBox.Show("Translation process completed", "", MessageBoxButton.OK);
+        }
+
+        /// <summary>
+        /// Shows confirmation dialog to overwite or not
+        /// </summary>
+        /// <returns></returns>
+        private bool Overwrite()
+        {
+            string sMessageBoxText = "Translated files already exist. Would you like to overwrite them?";
+
+            MessageBoxButton btnMessageBox = MessageBoxButton.YesNo;
+            MessageBoxImage icnMessageBox = MessageBoxImage.Warning;
+
+            MessageBoxResult rsltMessageBox = MessageBox.Show(sMessageBoxText, string.Empty, btnMessageBox, icnMessageBox);
+
+            return rsltMessageBox == MessageBoxResult.Yes;
+        }
+
+        /// <summary>
+        /// Returns destination path
+        /// </summary> 
+        private string GetDestinationPath()
+        {
+            string destinationPath = string.Empty;
+            if (!string.IsNullOrEmpty(Settings.Default["FileDestinationDefaultPath"].ToString()))
+                destinationPath = Settings.Default["FileDestinationDefaultPath"].ToString();
+            else
+            {
+                var dialog = new System.Windows.Forms.FolderBrowserDialog();
+                if (Convert.ToBoolean(dialog.ShowDialog()))
+                {
+                    destinationPath = dialog.SelectedPath;
+                }
+            }
+
+            return destinationPath;
         }
     }
 }

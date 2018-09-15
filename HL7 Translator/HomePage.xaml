@@ -4,21 +4,37 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HL7_Translator"
-      mc:Ignorable="d"  Height="330" Width="550" VerticalAlignment="Bottom"
-      Title="Home" FontSize="14">
-
+      mc:Ignorable="d"  Height="450" Width="650" VerticalAlignment="Bottom" HorizontalAlignment="Center"
+      Title="Home" FontSize="16">
+    <Page.Resources>
+        <Style x:Key="styleCalendar" TargetType="{x:Type Calendar}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Calendar}">
+                        <!-- Wrapping in ViewBox will enlarge calendar of that size.-->
+                        <Viewbox Height="300"
+                                 Width="300">
+                            <CalendarItem x:Name="PART_CalendarItem"
+                                          Background="{TemplateBinding Background}"
+                                          BorderBrush="{TemplateBinding BorderBrush}"
+                                          BorderThickness="{TemplateBinding BorderThickness}"/>
+                        </Viewbox>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
     <Grid>
-        <Button Name="TranslateButton" Content="Choose HL7 File For Translation" HorizontalAlignment="Left" Margin="166,131,0,0" VerticalAlignment="Top" Width="211" Height="53" Click="TranslateButton_Click"/>
-        <Label Content="Batch Date" HorizontalAlignment="Left" Margin="143,22,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Batch Number" HorizontalAlignment="Left" Margin="143,64,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <DatePicker Name="BatchDatePicker" HorizontalAlignment="Left" Margin="260,23,0,0" VerticalAlignment="Top" Width="133"/>
-        <ComboBox Name="BatchNumberComboBox" HorizontalAlignment="Left" Margin="260,68,0,0" VerticalAlignment="Top" Width="133">
+        <Button Name="TranslateButton" Content="Choose HL7 File For Translation" HorizontalAlignment="Center" Margin="0,226,0,0" VerticalAlignment="Top" Width="235" Height="53" Click="TranslateButton_Click"/>
+        <Label Content="Batch Date" HorizontalAlignment="Left" Margin="186,101,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Batch Number" HorizontalAlignment="Left" Margin="186,148,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <DatePicker Name="BatchDatePicker" HorizontalAlignment="Left" Margin="325,102,0,0" VerticalAlignment="Top" Width="133" Height="30" CalendarStyle="{StaticResource styleCalendar}"/>
+        <ComboBox Name="BatchNumberComboBox" HorizontalAlignment="Left" Margin="325,152,0,0" VerticalAlignment="Top" Width="133">
             <ComboBoxItem Content="1" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="2" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="3" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="4" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="5" HorizontalAlignment="Left" Width="118"/>
-            <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="6" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="7" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="8" HorizontalAlignment="Left" Width="118"/>
@@ -30,5 +46,9 @@
             <ComboBoxItem Content="14" HorizontalAlignment="Left" Width="118"/>
             <ComboBoxItem Content="15" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
+        <Label Content="Enter the batch date and batch number of the results to be converted" HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="539"/>
+        <TextBlock TextWrapping="WrapWithOverflow" VerticalAlignment="Bottom" FontSize="11" Margin="0,0,4,10" HorizontalAlignment="Center">
+            * Select your source file folder (HL7 File), and your destination file (.txt file) folders by clicking on the "Settings" menu above
+        </TextBlock>
     </Grid>
 </Page>

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using HL7_Translator.Properties;
@@ -25,7 +26,7 @@ namespace HL7_Translator
                 return;
             }
 
-            if(BatchNumberComboBox.SelectedItem == null)
+            if (BatchNumberComboBox.SelectedItem == null)
             {
                 System.Windows.MessageBox.Show("Please choose batch number", "", MessageBoxButton.OK);
                 BatchNumberComboBox.Focus();
@@ -34,23 +35,27 @@ namespace HL7_Translator
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
-            var defaultPath = Settings.Default["FileSourceDefaultPath"].ToString();
-
-            if (!string.IsNullOrEmpty(defaultPath))
-                openFileDialog.InitialDirectory = defaultPath;
-
-            if (openFileDialog.ShowDialog() == true)
+            try
             {
-                var HL7Content = File.ReadAllText(openFileDialog.FileName);
+                var defaultPath = Settings.Default["FileSourceDefaultPath"].ToString();
 
-                string month = BatchDatePicker.DisplayDate.Month < 10 ? $"0{BatchDatePicker.DisplayDate.Month}" : BatchDatePicker.DisplayDate.Month.ToString();
-                string day = BatchDatePicker.DisplayDate.Day < 10 ? $"0{BatchDatePicker.DisplayDate.Day}" : BatchDatePicker.DisplayDate.Day.ToString();
+                if (!string.IsNullOrEmpty(defaultPath))
+                    openFileDialog.InitialDirectory = defaultPath;
 
-                var fileProcessor = new HL7FileProcessor();
-                fileProcessor.ProcessContent(HL7Content, $"{month}{day}", BatchNumberComboBox.Text);
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    var HL7Content = File.ReadAllText(openFileDialog.FileName);
 
-                System.Windows.MessageBox.Show("Translation process completed", "", MessageBoxButton.OK);
+                    string month = BatchDatePicker.SelectedDate.Value.Month < 10 ? $"0{BatchDatePicker.SelectedDate.Value.Month}" : BatchDatePicker.SelectedDate.Value.Month.ToString();
+                    string day = BatchDatePicker.SelectedDate.Value.Day < 10 ? $"0{BatchDatePicker.SelectedDate.Value.Day}" : BatchDatePicker.SelectedDate.Value.Day.ToString();
 
+                    var fileProcessor = new HL7FileProcessor();
+                    fileProcessor.ProcessContent(HL7Content, $"{month}{day}", BatchNumberComboBox.Text);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
     }
