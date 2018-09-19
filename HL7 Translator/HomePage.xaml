@@ -47,8 +47,10 @@
             <ComboBoxItem Content="15" HorizontalAlignment="Left" Width="118"/>
         </ComboBox>
         <Label Content="Enter the batch date and batch number of the results to be converted" HorizontalAlignment="Center" Margin="0,7,0,0" VerticalAlignment="Top" FontWeight="Bold" Width="539"/>
-        <TextBlock TextWrapping="WrapWithOverflow" VerticalAlignment="Bottom" FontSize="11" Margin="0,0,4,10" HorizontalAlignment="Center">
+        <TextBlock TextWrapping="WrapWithOverflow" VerticalAlignment="Bottom" FontSize="11" Margin="24,0,28,52" HorizontalAlignment="Center">
             * Select your source file folder (HL7 File), and your destination file (.txt file) folders by clicking on the "Settings" menu above
         </TextBlock>
+        <TextBlock TextWrapping="WrapWithOverflow" VerticalAlignment="Bottom" FontSize="11" Margin="64,0,526,16" ><Run Text="Version 1.1"/></TextBlock>
+        <TextBlock TextWrapping="WrapWithOverflow" VerticalAlignment="Bottom" FontSize="11" Margin="495,0,63,16" ><Run Text="© 2018 Entromed"/></TextBlock>
     </Grid>
 </Page>

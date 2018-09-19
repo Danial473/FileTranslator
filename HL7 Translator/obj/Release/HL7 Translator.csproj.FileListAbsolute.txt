@@ -1,0 +1,18 @@
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\bin\Release\HL7 Translator.exe.config
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\bin\Release\HL7 Translator.exe
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\bin\Release\HL7 Translator.pdb
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\MainWindow.baml
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HomePage.g.cs
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\MainWindow.g.cs
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\SettingsPage.g.cs
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\App.g.cs
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HL7 Translator_MarkupCompile.cache
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HL7 Translator_MarkupCompile.lref
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HomePage.baml
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\SettingsPage.baml
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HL7 Translator.g.resources
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HL7_Translator.Properties.Resources.resources
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HL7 Translator.csproj.GenerateResource.Cache
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HL7 Translator.csproj.CoreCompileInputs.cache
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HL7 Translator.exe
+C:\Users\dparsa\Desktop\FileTranslator\HL7 Translator\obj\Release\HL7 Translator.pdb
