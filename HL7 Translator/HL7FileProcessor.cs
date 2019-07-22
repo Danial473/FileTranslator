@@ -16,7 +16,6 @@ namespace HL7_Translator
         public string FilePath { get; set; }
 
         public const string ArrayName = "GAM";
-        public const int controlCount = 3;
 
 
         public void ProcessContent(string content, string date, string batchNumber)
@@ -26,6 +25,8 @@ namespace HL7_Translator
             if (!string.IsNullOrWhiteSpace(Settings.Default["FileSplitterString"].ToString()))
                 carveString = Convert.ToString(Settings.Default["FileSplitterString"]);
 
+            var header = content.Substring(content.IndexOf("PuTTY"), 29);
+
             var splittedContent = content.Split(new[] { carveString }, StringSplitOptions.None);
 
             for (int i = 1; i < splittedContent.Length; i++)
@@ -33,12 +34,23 @@ namespace HL7_Translator
                 var splittedRow = splittedContent[i].Split(new string[] { "\r\n" }, StringSplitOptions.None);
                 foreach (string antigen in AntigensList)
                 {
+                    // Get Accession Number
+                    var accessionDetails = splittedRow[2].Split(new[] { '|' })[2].Split(new[] { '^' });
+
+                    //get result value
                     var value = GetRowValue(splittedRow, antigen);
-                    AntigenValueList.Add(new AntigenValue { AntigenName = antigen, Value = value });
+                    AntigenValueList.Add(new AntigenValue
+                    {
+                        AntigenName = antigen,
+                        Value = value,
+                        AccessionNumber = accessionDetails[0], // per requirements changes on July 18, 2019
+                        RackNumber = accessionDetails[1],
+                        RackPosition = accessionDetails[2]
+                    });
                 }
             }
 
-            CreateFile(date, batchNumber);
+            CreateFile(date, batchNumber, header);
         }
 
         private string GetRowValue(string[] HL7Row, string antigen)
@@ -56,7 +68,7 @@ namespace HL7_Translator
             throw new Exception($"The selected HL7 file does not contain rows for antigen={antigen}");
         }
 
-        private void CreateFile(string date, string batchNumber)
+        private void CreateFile(string date, string batchNumber, string header)
         {
             string destinationPath = GetDestinationPath();
 
@@ -72,26 +84,20 @@ namespace HL7_Translator
             // get antigen names for the ones we have values for and write file content into text files
             foreach (var antigen in AntigensList)
             {
-                var antigenValues = AntigenValueList.Where(a => a.AntigenName == antigen).ToList();
+                var antigenValues =
+                    AntigenValueList.Where(a => a.AntigenName == antigen)
+                    .OrderBy(a => a.RackNumber)
+                    .ThenBy(a => a.RackPosition).ToList();
+
                 if (antigenValues.Any())
                 {
                     var fileName = $"{ArrayName}{antigen}.{date}.{batchNumber}";
-                    var fileContent = new StringBuilder($"Experiment File Name:,{fileName}.xpt\r\n\r\n");
-
-                    // Adding control values
-                    for (int i = 0; i < controlCount; i++)
+                    //var fileContent = new StringBuilder($"Experiment File Name:,{fileName}.xpt\r\n\r\n");
+                    var fileContent = new StringBuilder($"{header} {antigen}\r\n");
+                    
+                    foreach (var antigenValue in antigenValues)
                     {
-                        fileContent.AppendLine($"CTL{i + 1},{antigenValues[i].Value}");
-                    }
-
-                    fileContent.AppendLine();
-                    fileContent.AppendLine("BLK,?????");
-
-                    // Adding specimen values
-                    var count = antigenValues.Count(a => a.AntigenName == antigen);
-                    for (int i = controlCount; i < count; i++)
-                    {
-                        fileContent.AppendLine($"SPL{i - controlCount + 1},{antigenValues[i].Value}");
+                        fileContent.AppendLine($"RCK{antigenValue.RackNumber},{antigenValue.RackPosition},{antigenValue.Value},{antigenValue.AccessionNumber}");
                     }
 
                     string path = $"{ destinationPath }\\{ fileName }.txt";

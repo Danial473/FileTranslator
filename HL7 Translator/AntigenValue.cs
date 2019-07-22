@@ -10,5 +10,8 @@ namespace HL7_Translator
     {
         public string AntigenName { get; set; }
         public string Value { get; set; }
+        public string AccessionNumber { get; set; }
+        public string RackNumber { get; set; }
+        public string RackPosition { get; set; }
     }
 }
